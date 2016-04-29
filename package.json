@@ -1,0 +1,28 @@
+{
+  "name": "gulp-pandoc-writer",
+  "version": "1.0.0",
+  "description": "Write files from Pandoc that are not streamable (DOCX, EPUB, etc) but that are also not PDFs.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oncomouse/gulp-pandoc-writer.git"
+  },
+  "keywords": [
+    "pandoc"
+  ],
+  "author": "Andrew Pilsch <apilsch@tamu.edu> (http://andrew.pilsch.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oncomouse/gulp-pandoc-writer/issues"
+  },
+  "homepage": "https://github.com/oncomouse/gulp-pandoc-writer#readme",
+  "dependencies": {
+    "gulp-util": "^3.0.7",
+    "mkdirp": "^0.5.1",
+    "pdc": "^0.2.2",
+    "through2": "^2.0.1"
+  }
+}
