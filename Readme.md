@@ -19,7 +19,8 @@ gulp.task('build', function() {
     gulp.src('src/markdown/**/*.md')
         .pipe(pandocWriter({
 			outputDir: 'dist/docx',
-			fileType: '.docx',
+			inputFileType:'.md',
+			outputFileType: '.docx',
 			args: [
 				'--smart'
 			]
@@ -38,7 +39,12 @@ gulp.task('build', function() {
 
 The directory to which output will be written by the plugin. The plugin will also generate HTML files for streaming purposes.
 
-#### options.fileType
+
+#### options.inputFileType
+
+This can be any filetype supported by pandoc. Defaults to .md when no filetype is specified.
+
+#### options.outputFileType
 
 **Type:** String
 
