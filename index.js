@@ -31,7 +31,11 @@ var pluginName  = 'gulp-pandoc-writer';
 module.exports = function(opts) {
     var args = opts.args || [];
     var outputDir = opts.outputDir;
-	var fileType = opts.fileType || '.docx';
+	
+	/**support for input and output file types */
+	
+	var inputFileType = opts.inputFileType || '.md'
+	var outputFileType = opts.outputFileType || '.docx';
 
     return through.obj(function (file, enc, cb) {
         var input = file.contents.toString();
@@ -53,7 +57,9 @@ module.exports = function(opts) {
         // to the pipeline.
 
         var outputFile = outputDir + '/' + file.relative;
-        outputFile = outputFile.replace('.md', fileType);
+		
+		/** support for input and output filetypes  */
+        outputFile = outputFile.replace(inputFileType, outputFileType);
 
         // create directory for pdf
         var oDir = outputFile.replace(/[^\/]+$/, '');
@@ -67,7 +73,7 @@ module.exports = function(opts) {
         // create output file
         var outputArgs = args.slice();
         outputArgs.push('--output=' + outputFile);
-        pdc(input, 'markdown', fileType.replace(/^\./,''), outputArgs, function(err, output) {
+        pdc(input, 'markdown', outputFileType.replace(/^\./,''), outputArgs, function(err, output) {
             if (err) {
                 this.emit('error', new PluginError(pluginName, err.toString()));
                 return cb();
