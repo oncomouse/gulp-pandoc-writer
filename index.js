@@ -68,7 +68,7 @@ module.exports = function(opts) {
                 this.emit('error', err.toString());
                 return cb();
             }
-        });
+        }.bind(this));
 
         // create output file
         var outputArgs = args.slice();
@@ -78,7 +78,7 @@ module.exports = function(opts) {
                 this.emit('error', new PluginError(pluginName, err.toString()));
                 return cb();
             }
-        });
+        }.bind(this));
 
         // create html
         var htmlArgs = args.slice();
