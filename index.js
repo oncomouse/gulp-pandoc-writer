@@ -16,6 +16,7 @@ var pdc     = require('pdc');
 var through = require('through2');
 var gutil   = require('gulp-util');
 var mkdirp  = require('mkdirp');
+var path    = require('path');
 
 // -----------------------------------------------------------------------------
 // PLUGIN
@@ -62,7 +63,7 @@ module.exports = function(opts) {
         outputFile = outputFile.replace(inputFileType, outputFileType);
 
         // create directory for pdf
-        var oDir = outputFile.replace(/[^\/]+$/, '');
+        var oDir = path.dirname(outputFile);
         mkdirp(oDir, function(err) {
             if (err) {
                 this.emit('error', err.toString());
@@ -82,7 +83,6 @@ module.exports = function(opts) {
 
         // create html
         var htmlArgs = args.slice();
-        htmlArgs.push('--standalone');
         pdc(input, 'markdown', 'html5', htmlArgs, function(err, output) {
             if (err) {
                 this.emit('error', new PluginError(pluginName, err.toString()));
