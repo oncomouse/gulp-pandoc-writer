@@ -1,6 +1,6 @@
 {
   "name": "gulp-pandoc-writer",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Write files from Pandoc that are not streamable (DOCX, EPUB, etc) but that are also not PDFs.",
   "main": "index.js",
   "scripts": {
