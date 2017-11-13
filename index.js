@@ -83,7 +83,6 @@ module.exports = function(opts) {
 
         // create html
         var htmlArgs = args.slice();
-        htmlArgs.push('--standalone');
         pdc(input, 'markdown', 'html5', htmlArgs, function(err, output) {
             if (err) {
                 this.emit('error', new PluginError(pluginName, err.toString()));
